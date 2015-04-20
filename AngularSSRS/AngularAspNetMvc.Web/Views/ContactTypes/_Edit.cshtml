@@ -1,0 +1,15 @@
+﻿@using AngularAspNetMvc.Web.Core.HtmlHelpers
+@model AngularAspNetMvc.Models.Contacts.ContactType
+<div>
+    <h1>Edit Contact Type</h1>
+</div>
+
+
+<div>
+    @using (@Html.BeginCustomForm("contactForm"))
+    {
+        @Html.CustomInputFor(m => m.Name)
+        @Html.CustomSaveButton()
+        @Html.CustomCancelButton()
+    }
+</div>

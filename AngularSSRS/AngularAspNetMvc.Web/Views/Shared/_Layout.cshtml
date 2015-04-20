@@ -1,0 +1,80 @@
+﻿@using System.Web.Optimization
+@using AngularAspNetMvc.Web.Controllers
+
+
+<!DOCTYPE html>
+<!-- data-ng-app="app.main"-->
+<html data-ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Demo</title>
+    @*
+        Scripts are here to make sure we can bootstrap early enough for users not to see templates before
+        they are processed by angular.  We use ng-cloak for the same reason.
+    *@
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/thirdparty")
+    <meta name="description" content="asp.net mvs angular web site" />
+</head>
+<body data-ng-controller="homeController">
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menuBarDiv">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand">Contacts</div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="menuBarDiv" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav" data-ng-cloak="">
+                <li data-ng-repeat="oneMenu in menus"><a data-no-click="" data-ng-click="navigate(oneMenu.Path)" data-ng-href="#">{{oneMenu.Title}}</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+    <!-- Begin page content -->
+    <div class="container">
+        <div id="bodyDiv" class="row">
+            <div class="row">
+                <!--data-ng-cloak=""-->
+                <div class="col-xs-12" data-ng-view="" data-ng-cloak="">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="appFooter" class="row navbar-fixed-bottom">
+        <div class="container">
+            <p class="text-muted text-center">
+                Copyright Sergey Barskiy &copy; 2013-2104
+            </p>
+        </div>
+    </div>
+
+</body>
+@Scripts.Render("~/app/modules")
+</html>
+
+<script type="text/javascript">
+    // this creates global modules that will be used by other modules
+    // to access some global variables stored in globals module.  We cannot use type script here.
+    angular.module('app.globalsModule', []).factory('globalsService', function () {
+        var globals = {};
+        globals.baseUrl = '@(Url.Content(@"~/"))';
+        globals.version = '@(typeof(HomeController).Assembly.GetName().Version.ToString())';
+        globals.webApiBaseUrl = '@(Url.Content(@"~/api"))';
+        globals.applicatioName = 'Contacts';
+        return globals;
+    });
+</script>
+@RenderSection("scripts", false)

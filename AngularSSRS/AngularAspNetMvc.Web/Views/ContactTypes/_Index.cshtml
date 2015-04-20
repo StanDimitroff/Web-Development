@@ -1,0 +1,14 @@
+﻿@model AngularAspNetMvc.Models.Contacts.ContactType
+<div>
+    <h1>Contact Types</h1>
+</div>
+<button class="btn btn-success addButton" data-ng-click="add()">Add</button>
+<div>
+    <div class="well" data-ng-cloak data-ng-repeat="contactType in contactTypes">
+        <div class="h2">{{contactType.Name}}</div>
+        <div>
+            <button class="btn btn-primary" data-ng-click="$parent.editType(contactType)">Edit</button>
+            <button class="btn btn-danger" data-ng-click="$parent.deleteType(contactType)">Delete</button>
+        </div>
+    </div>
+</div>

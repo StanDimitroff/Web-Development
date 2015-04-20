@@ -1,0 +1,13 @@
+﻿@model AngularAspNetMvc.Models.Reports.Report[]
+<div>
+    <h1>Reports</h1>
+</div>
+<div>
+    <div class="well" data-ng-cloak data-ng-repeat="report in reports">
+        <div class="h2">{{report.ReportName}}</div>
+        <div class="h6">{{report.ReportDescription}}</div>
+        <div>
+            <button class="btn btn-primary" data-ng-click="$parent.viewReport(report)">View</button>
+        </div>
+    </div>
+</div>

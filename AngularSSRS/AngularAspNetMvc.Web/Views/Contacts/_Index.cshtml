@@ -1,0 +1,31 @@
+﻿@model AngularAspNetMvc.Models.Contacts.ContactInfo
+<div>
+    <h1>Contacts</h1>
+</div>
+<button class="btn btn-success addButton" data-ng-click="add()">Add</button>
+<div class="verticalMargin">
+    <form class="form-inline" role="search">
+        <div class="input-group">
+            
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default" data-ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</button>
+            </span>
+            <input type="text" placeholder="Enter name" data-autocomplete="false" data-ng-model="name" class="form-control">
+        </div>
+    </form>
+</div>
+<div class="verticalMargin">
+    <span><label>Total found: </label>{{totalFound}} ({{pageCount}} pages)</span>
+</div>
+<ul data-pagination></ul>
+<div>
+    <div class="well" data-ng-cloak data-ng-repeat="contact in contacts">
+        <div class="h2">{{contact.LastName}}, {{contact.FirstName}}</div>
+        <div>
+            <button class="btn btn-primary" data-ng-click="$parent.editContact(contact)">Edit</button>
+            <button class="btn btn-danger" data-ng-click="$parent.deleteContact(contact)">Delete</button>
+        </div>
+    </div>
+</div>
+@*<ul data-pagination data-goto-page-function="gotoPage" data-page-count="pageCount" data-current-page="currentPage"></ul>*@
+<ul data-pagination></ul>

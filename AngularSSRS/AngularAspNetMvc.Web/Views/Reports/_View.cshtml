@@ -1,0 +1,14 @@
+﻿@model AngularAspNetMvc.Models.Reports.Report
+<div>
+    <div class="h2">{{report.ReportName}}</div>
+    <div class="h6">{{report.ReportDescription}}</div>
+    <br />
+    <div data-ng-repeat="parameter in report.ReportRequestParameters">
+        <div data-ng-include="'@Url.Content("~/Reports/")' + parameter.ParameterViewName"></div>
+    </div>
+    <br />
+    <div>
+        <button class="btn btn-primary" data-ng-click="runReport()">View</button>
+    </div>
+</div>
+<div id="reportPreviewDiv" data-report data-report-source="reportSource" data-report-name="report.ReportName" class="hide"></div>

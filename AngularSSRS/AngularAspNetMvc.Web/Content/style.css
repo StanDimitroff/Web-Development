@@ -1,0 +1,29 @@
+﻿body {
+    padding-top: 70px;
+}
+
+.addButton {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.saveButton {
+    margin-right: 10px;
+}
+
+
+.cancelButton {
+    margin-right: 10px;
+}
+
+.verticalMargin {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.radio label, .checkbox label {
+    display: inline;
+    font-weight: bold;
+    cursor: pointer;
+}
